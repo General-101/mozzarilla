@@ -715,12 +715,12 @@ class AnimationsCompilerWindow(window_base_class, BinillaWidget):
                     print("    Compiling model_animations cancelled.")
                     return
 
-        updating = antr_tag is not None
-        antr_def = antr_tag = self.get_model_animations_tagdef()
-        if updating:
+        if antr_tag is not None:
             print("Updating existing model_animations tag.")
+            antr_def = antr_tag.definition
         else:
             print("Creating new model_animations tag.")
+            antr_def = self.get_model_animations_tagdef()
             antr_tag = antr_def.build()
 
         antr_tag.filepath = self.model_animations_path.get()
